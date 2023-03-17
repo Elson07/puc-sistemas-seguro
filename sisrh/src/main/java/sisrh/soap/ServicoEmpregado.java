@@ -38,12 +38,12 @@ public class ServicoEmpregado {
 	
 	@WebMethod(action = "listarAtivos")
 	public Empregados listarAtivos() throws Exception{
-		return Empregados;
+		
 	}
 	
 	@WebMethod(action = "listarInativos")
 	public Empregados listarInativos() throws Exception{
-		return Empregados;
+		
 	}
 
 }
