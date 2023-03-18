@@ -82,34 +82,10 @@ public class Banco {
 		return lista;
 	}
 	
-	//Lista todos empregados ativos 
 	public static List<Empregado> listarEmpregadosAtivos() throws Exception {
-		
 		List<Empregado> lista = new ArrayList<Empregado>();
 		Connection conn = Banco.getConexao();
-		String sql = "SELECT * FROM Empregado where desligamento is null";
-		PreparedStatement prepStmt = conn.prepareStatement(sql);
-		ResultSet rs = prepStmt.executeQuery();
-		while (rs.next()) {
-			String matricula = rs.getString("matricula");
-			String nome = rs.getString("nome");
-			Date admissao = rs.getDate("admissao");
-			Date desligamento = rs.getDate("desligamento");
-			Double salario = rs.getDouble("salario");
-			Empregado emp = new Empregado(matricula, nome, admissao, desligamento, salario);
-			lista.add(emp);
-		}
-		rs.close();
-		prepStmt.close();
-		return lista;
-	}
-	
-	//Lista todos os empregados inativos
-	public static List<Empregado> listarEmpregadosInativos() throws Exception {
-		
-		List<Empregado> lista = new ArrayList<Empregado>();
-		Connection conn = Banco.getConexao();
-		String sql = "SELECT * FROM Empregado where desligamento is not null";
+		String sql = "SELECT * FROM Empregado";
 		PreparedStatement prepStmt = conn.prepareStatement(sql);
 		ResultSet rs = prepStmt.executeQuery();
 		while (rs.next()) {
@@ -127,6 +103,7 @@ public class Banco {
 	}
 	
 	
+
 	public static List<Usuario> listarUsuarios() throws Exception {
 		List<Usuario> lista = new ArrayList<Usuario>();
 		Connection conn = Banco.getConexao();
